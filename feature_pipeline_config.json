@@ -1,0 +1,43 @@
+{
+  "swiggy": {
+    "orders_data_path": "s3://data-mcdelivery/swiggy_sales/",
+    "orders_columns": ["id","order_no","user_id","business_model_id_id","store_id_id","store_name","order_placed_datetime","order_delivery_datetime","schedule_datetime","before_payment_delivery_eta","before_payment_pickup_eta","coupon_price","applied_coupon","offer_applied","discounted_price","tip","is_distance_fee_applicable","actual_subtotal","sub_total_price","cart_id","active","status_id","platform","channel","payment_method","gross_price","total_price","total_cgst","total_sgst","delivery_cgst","delivery_sgst","external_order_id"],
+    "order_items_data_path": "s3://data-mcdelivery/swiggy_salesdetail/",
+    "order_items_columns": ["sales_id","quantity","item_id_id","item_name","is_customized","is_veg","promo_item","tpo_discount_price","tpo_original_price","tpo_saved_price","created_at","original_price"],
+    "output_path": "s3://blitz-mcdelivery/features/orders/swiggy/swiggy_orders_20250828_only_ownapp_customers_full_data.parquet",
+    "orderqueries_path": "",
+    "has_query": false
+  },
+  "ownapp": {
+    "orders_data_path": "s3://data-mcdelivery/sales/",
+    "orders_columns": ["id","order_no","user_id","business_model_id_id","store_id_id","store_name","order_placed_datetime","order_delivery_datetime","schedule_datetime","before_payment_delivery_eta","before_payment_pickup_eta","coupon_price","applied_coupon","offer_applied","discounted_price","tip","is_distance_fee_applicable","cart_id","active","status_id","platform","channel","payment_method","gross_price","total_price","total_cgst","total_sgst","delivery_cgst","delivery_sgst","actual_subtotal","sub_total_price"],
+    "order_items_data_path": "s3://data-mcdelivery/salesdetail/",
+    "order_items_columns": ["sales_id","quantity","item_id_id","item_name","is_customized","is_veg","promo_item","tpo_discount_price","tpo_original_price","tpo_saved_price","created_at","original_price"],
+    "output_path": "s3://blitz-mcdelivery/features/orders/ownapp/ownapp_orders_full_data_20250828.parquet",
+    "orderqueries_path": "s3://data-mcdelivery/orderqueries/",
+    "has_query": true
+  },
+  "instore": {
+    "orders_file_pattern": "s3://data-mcdelivery/instore_data/order_level_v2/*.csv",
+    "order_items_file_pattern": "s3://data-mcdelivery/instore_data/item_level/*.csv",
+    "output_path": "s3://blitz-mcdelivery/features/orders/instore/instore_orders_full_data_20250828.parquet"
+  },
+  "common": {
+    "current_run_date": "2025-07-01",
+    "months_offset": 27,
+    "timezone": "Asia/Kolkata",
+    "mapping_file": "s3://data-mcdelivery/received_over_email/CustomerCode_InvoiceNo_Mapping_withInvoiceDate_Store_code_till_jun25.csv",
+    "store_mds_dsr_path": "s3://data-mcdelivery/received_over_email/MDS stores update June 2025_Id mapping(Sheet1).csv",
+    "store_master_path": "s3://data-mcdelivery/received_over_email/250721_Store_Generator_report.csv",
+    "categories_path": "s3://data-mcdelivery/received_over_email/250819_Category_classification_for_Drivers_analysis_v4.csv",
+    "clear_master_path": "s3://data-mcdelivery/received_over_email/clear_master_mapping.csv",
+    "price_config":{
+        "price_bins": [0, 35, 100, 175, 250, 325, 400, 600, 100000],
+        "bucket_labels": ["Add_ons", "Economy", "Value", "Mid_Tier", "Premium", "Indulgence", "Ultimate", "Group"]
+      }
+  },
+  "customer": {
+    "cutoff_date": "2024-07-01",
+    "output_path": "s3://blitz-mcdelivery/features/users/ownapp/20250819_features_for_chaid_tree_L12M/L12M_20250828_features_for_chaid_tree.parquet"
+  }
+}
